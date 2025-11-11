@@ -1,0 +1,11 @@
+{
+  "name": "workflow",
+  "state": "./state.json",
+  "jobs": [
+    {
+      "name": "First User",
+      "expression": "./getUsers.js",
+      "adaptors": ["@openfn/language-http"]
+    }
+  ]
+}

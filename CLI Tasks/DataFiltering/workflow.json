@@ -1,0 +1,12 @@
+{
+  "name": "Data Filtering and cleaning",
+  "state": "/.state.json",
+
+  "jobs": [
+    {
+      "name": "Filter UserId1",
+      "expression": "./getPosts.js",
+      "adaptors": ["@openfn/language-http"]
+    }
+  ]
+}

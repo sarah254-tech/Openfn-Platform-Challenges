@@ -1,0 +1,5 @@
+/*
+$env:OPENFN_REPO_DIR = "D:\OpenFnCLI challenges\CLI Tasks\repo"
+openfn workflow.json -o tmp/output.json
+baseUrl: "https://jsonplaceholder.typicode.com"
+*/

@@ -1,0 +1,15 @@
+{
+  "workflow": {
+    "name": "Covid Metadata",
+    "steps": [
+      {
+        "name": "Fetch US Daily COVID Stats",
+        "expression": "./covid.js",
+        "adaptors": ["@openfn/language-http"]
+      }
+    ]
+  },
+  "options": {
+    "timeout": 300000
+  }
+}

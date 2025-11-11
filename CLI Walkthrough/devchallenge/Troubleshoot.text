@@ -1,0 +1,73 @@
+
+OpenFn CLI Installation & Troubleshooting Guide (Beginner-Friendly)
+===================================================================
+
+STEP-BY-STEP INSTALLATION & SETUP
+---------------------------------
+1. Create your project directory:
+   mkdir devchallenge && cd devchallenge
+
+2. Create a tmp folder to store state.json and output.json:
+   mkdir tmp
+
+3. Prevent uploading sensitive files to GitHub by ignoring the tmp folder:
+   echo "tmp" >> .gitignore
+
+4. (Optional) Create state.json and output.json files manually (after tmp is created):
+   touch tmp/state.json tmp/output.json
+
+5. Create your first job file:
+   touch hello.js
+   Add content:
+   -------------------
+   import { fn } from "@openfn/language-common";
+   export default fn(state => {
+       console.log("Hello World!");
+       return state;
+   });
+   -------------------
+
+6. Install OpenFn CLI globally:
+   npm install -g @openfn/cli
+
+7. Run your job using CLI and auto-install adaptors:
+   openfn hello.js -a common --repoDir=./repo
+
+TROUBLESHOOTING COMMON ERRORS
+-----------------------------
+| Error Message                                    | Explanation                                                   | Solution                                                                 |
+|--------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
+| "no repo module dir found! Using /tmp/repo"      | No local adaptor folder found                                 | Set OPENFN_REPO_DIR env var or use --repoDir=./repo                     |
+| "TypeError: operations.map is not a function"    | The exported function was not wrapped properly                | Wrap with fn(state => { ... })                                           |
+| "cannot touch 'tmp/state.json': No such file"    | tmp folder was not created before creating the file           | Run mkdir tmp before creating files                                      |
+| CLI installs adaptor but fails with same error   | Mixing named exports and direct function calls                | Use default fn() wrapper properly                                        |
+| "state.data is undefined"                        | Request may have failed or no data returned                    | Check your GET URL and use afterResponse to access data                  |
+
+PRACTICE WITH LANGUAGE-HTTP ADAPTOR
+-----------------------------------
+Example: Fetching posts from JSONPlaceholder API
+------------------------
+import { get } from "@openfn/language-http";
+import { fn } from "@openfn/language-common";
+
+export default fn(state => {
+  return get("https://jsonplaceholder.typicode.com/posts", {
+    afterResponse: state => {
+      console.log(state.data[0]);
+      return state;
+    }
+  });
+});
+------------------------
+
+Run using:
+openfn getPosts.js -a http --repoDir=./repo
+
+
+NOTES:
+------
+- Always wrap your logic with fn(state => ...)
+- Always pass --repoDir to avoid global repo warnings
+- Use afterResponse for logging and transforming data
+
+#YouGotTheOpenFnJob 🎯

@@ -1,0 +1,15 @@
+{
+  "name": "Debug",
+  "state": "./state.json",
+  "jobs": [
+    {
+      "name": "Fetch Post180",
+      "expression": "./debug.js",
+      "adaptors": ["@openfn/language-http"]
+    }
+  ],
+
+  "configuration": {
+    "baseUrl": "https://jsonplaceholder.typicode.com"
+  }
+}

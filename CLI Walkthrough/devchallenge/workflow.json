@@ -1,0 +1,32 @@
+{
+  "options": {
+    "start": "getPatients"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "id": "getPatients",
+        "adaptor": "http",
+        "expression": "getPatients.js",
+        "configuration": "tmp/http-creds.json",
+        "next": {
+          "getGlobalOrgUnits": true
+        }
+      },
+      {
+        "id": "getGlobalOrgUnits",
+        "adaptor": "common",
+        "expression": "getGlobalOrgUnits.js",
+        "next": {
+          "createTEIs": true
+        }
+      },
+      {
+        "id": "createTEIs",
+        "adaptor": "dhis2",
+        "expression": "createTEIs.js",
+        "configuration": "tmp/dhis2-creds.json"
+      }
+    ]
+  }
+}

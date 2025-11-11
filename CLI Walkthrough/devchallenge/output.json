@@ -1,0 +1,20 @@
+{
+  "data": {},
+  "errors": {
+    "job-1": {
+      "source": "runtime",
+      "name": "AdaptorError",
+      "severity": "fail",
+      "message": "UNEXPECTED_RELATIVE_URL",
+      "details": {
+        "message": "UNEXPECTED_RELATIVE_URL",
+        "code": "UNEXPECTED_RELATIVE_URL",
+        "description": "You passed a relative URL but didn't set baseUrl",
+        "url": "users",
+        "fix": "Set the baseUrl on state.configuration or use an absolute URL, like https://example.com/api/users"
+      },
+      "line": 1,
+      "operationName": "get"
+    }
+  }
+}

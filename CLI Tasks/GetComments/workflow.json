@@ -1,0 +1,14 @@
+{
+  "name": "User1 Names and Emails Addresses",
+  "state": "./state.json",
+  "jobs": [
+    {
+      "name": "Fetch Emails and Names of User1",
+      "expression": "./getComments.js",
+      "adaptors": ["@openfn/language-http"]
+    }
+  ],
+  "configuration": {
+    "baseUrl": "https://jsonplaceholder.typicode.com"
+  }
+}

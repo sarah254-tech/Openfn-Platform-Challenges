@@ -1,0 +1,10 @@
+{
+  "name": "openfn-repo",
+  "description": "A repository for modules used by the openfn runtime",
+  "private": true,
+  "author": "Open Function Group <admin@openfn.org>",
+  "version": "1.0.0",
+  "dependencies": {
+    "@openfn/language-http_7.2.0": "npm:@openfn/language-http@^7.2.0"
+  }
+}
